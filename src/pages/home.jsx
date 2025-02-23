@@ -5,7 +5,7 @@ export default function Home() {
     <div className="coverbanner">
       <div className="home">
         <section>
-          <h1 className="Title display-5">Bem-vindo à Academia de Boxe!</h1>
+          <h1 className="Title">Bem-vindo à Academia de Boxe!</h1>
           <p className="text-lg mt-4 w-50 col-12 col-md-8 col-lg-6">
             Treine como um campeão. Junte-se a nós agora! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, perspiciatis incidunt! Esse ratione cupiditate, nam nostrum deserunt maiores quas incidunt eveniet aperiam? Incidunt quia iusto laboriosam ut explicabo tenetur nam?
           </p>
