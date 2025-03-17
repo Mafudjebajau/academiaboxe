@@ -1,0 +1,5 @@
+.shadow-box{
+    box-shadow: 4px 4px 4px #333;
+    border-right: none !important;
+    border-bottom: none !important;
+}
