@@ -21,7 +21,7 @@ const ContactPage = () => {
             <p>Email: contato@academiaboxe.com</p>
             <iframe
               title="mapa"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509354!2d144.95373531531583!3d-37.81627917975161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df1aefbfd%3A0x5045675218ce7e33!2sMelbourne%20CBD!5e0!3m2!1sen!2sau!4v1634730432227!5m2!1sen!2sau"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12137.911207156021!2d-15.586714215308639!3d11.858930764383539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-PT!2s!4v1742292714081!5m2!1spt-PT!2s"
               width="100%"
               height="250"
               style={{ border: 0 }}
