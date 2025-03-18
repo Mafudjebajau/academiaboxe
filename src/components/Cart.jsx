@@ -53,7 +53,7 @@ const Cart = ({ cart, removeFromCart }) => {
               <h3 className="text-lg font-semibold mb-3">Carrinho</h3>
               {cart.length === 0 ? (
                 <>
-                <img src="/public/no_data.svg" className="text-center justify-center" width={"100px"} />
+                <img src="/no_data.svg" className="text-center justify-center" width={"100px"} />
                 <p className="text-gray-500">Seu carrinho está vazio.</p>
                 </>
               ) : (
