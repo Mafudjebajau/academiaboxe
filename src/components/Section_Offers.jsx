@@ -22,7 +22,7 @@ function SectionOffers() {
                     <Col md={12} lg={4}>
                         <Card className="mb-4 bg-dark text-light">
                             <CardHeader className="p-2 pb-0">
-                                <CardTitle className="text-center"><img src="/public/icone_equipe_01.png" alt="equipe" /> <h2 className="text-center fw-bold pt-3"> Equipe Preparada</h2></CardTitle>
+                                <CardTitle className="text-center"><img src="/icone_equipe_01.png" alt="equipe" /> <h2 className="text-center fw-bold pt-3"> Equipe Preparada</h2></CardTitle>
                             </CardHeader>
                             <CardBody>
                                 <CardText className="text-center p2">Treinadores estão preparados para lhe ajudar com os seus objetivos</CardText>
