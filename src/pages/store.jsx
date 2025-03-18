@@ -1,30 +1,39 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+import { Container, Row } from "react-bootstrap";
+import ProductList from "../components/ProductList";
+import Cart from "../components/Cart";
 
-export default function Store() {
-  const [products, setProducts] = useState([]);
+const MiniLoja = () => {
+  const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    axios.get("http://localhost/backend/api/products.php").then((res) => {
-      setProducts(res.data);
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const itemExists = prevCart.find((item) => item.id === product.id);
+      if (itemExists) {
+        return prevCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];
+      }
     });
-  }, []);
+  };
+
+  const removeFromCart = (id) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
 
   return (
-    <div className="container">
-      <section className="p-8">
-        <h2 className="text-3xl font-bold mb-4">Loja de Artigos 🛍️</h2>
-        <div className="grid grid-cols-3 gap-4">
-          {products.map((product) => (
-            <div key={product.id} className="border p-4">
-              <img src={product.image} alt={product.name} className="w-full h-40 object-cover"/>
-              <h3 className="text-xl font-bold">{product.name}</h3>
-              <p className="text-lg font-semibold text-red-500">R$ {product.price}</p>
-              <a href="https://orangemoney.com" className="bg-yellow-500 text-white px-4 py-2 mt-2 block text-center">Comprar</a>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
+    <Container className="pt-plus">
+      <h1 className="text-center mb-5" >Mini Loja da Academia de Boxe</h1>
+      <Row>
+       
+          <ProductList addToCart={addToCart} />
+      
+      </Row>
+          <Cart cart={cart} removeFromCart={removeFromCart} />
+    </Container>
   );
-}
+};
+
+export default MiniLoja;

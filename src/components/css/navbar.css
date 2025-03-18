@@ -1,37 +1,19 @@
 
 /* === NAVEGAÇÃO === */
-.navbar{
-  background: rgba(0, 5, 26, 0.816) !important;
-}
-.navbar-toggler{
-  color: #04175231;
-}
-.nav-link{
-  text-align: center;
-  color: #f4a261;
-}
+
 nav {
-    position: fixed !important;
-    top: 0;
-    width: 100%;
     z-index: 1000;
-    background: rgba(34, 34, 34, 0.195);
-    color: #fff;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 24px;
+    background-color: #f1f3f7;
   }
+a{
+  text-decoration: none;
+  color: rgb(78, 77, 77);
+}
+a:hover{
+  color: black;
+  font-weight: 550;
+}
+
   
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  nav a:hover {
-    color: #f4a261 !important;
-  }
   

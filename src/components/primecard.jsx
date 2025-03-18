@@ -1,38 +1,34 @@
-import Card from 'react-bootstrap/Card';
-// import AOS from "aos";
-// import "aos/dist/aos.css"
-// import { useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { faCheckDouble } from '@fortawesome/free-solid-svg-icons/faCheckDouble';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Col, ListGroup, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-function PrimeCard() {
+function PrimeCard({ url, mediatype, title, items = [] }) {
 
-    // useEffect(()=>{
-    //     AOS.init({duration: 1500, once: false})
-    //   },[])
     return (
         <>
-            {[
-                'Primary',
-                'Success',
-                'Danger',
-                'Warning',  
-            ].map((variant) => (
-                <Card
-                // data-aos="fade-up"
-                    bg={'dark'}
-                    key={variant}
-                    border={variant.toLowerCase()}
-                    style={{ width: '18rem' }}
-                    className="mb-2 card__hovered"
-                >
-                   <Card.Header className='text-light' >🥊 Aulas para Todos os Níveis</Card.Header>
-                    <Card.Body>
-                        <Card.Title>{variant} Card Title </Card.Title>
-                        <Card.Text className="text-light">
-                            Desde iniciantes até competidores profissionais..
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            ))}
+            <Row className='p-4 my-5'>
+                <Col md={12} lg={6} className='text-center ' >
+                    <div className='d-flex justify-content-center' >
+                        {mediatype === "video" ? <video src={url} controls width="100%" className='rounded shadow'></video> : <img height="100%" src={url} alt={title} width="100%" className='rounded shadow'/>}
+                    </div>
+                </Col>
+                <Col md={12} lg={6} className='text-dark'>
+                    <h1 className='fw-bold'>{title}</h1>
+                    <ListGroup className='text-dark ps-3 pt-3 fs-5'>
+                        {items && items.map(item => (
+                            <ListGroup.Item className='text-dark py-2 mb-2 no-border' key={item.id}><FontAwesomeIcon className='pe-3 fw-bold' icon={faCheckDouble}   ></FontAwesomeIcon>{item}</ListGroup.Item>
+                        )
+                        )}
+                    </ListGroup> 
+                    <Link to={"/register"}>
+                    <Button variant='outline-dark' className="btn-lg my-3">
+                        Matricular
+                    </Button>
+                    </Link>
+                </Col>
+            </Row>
         </>
 
     );
@@ -40,11 +36,3 @@ function PrimeCard() {
 
 export default PrimeCard;
 
-{/* <Card key={vari} border={vari.toLowerCase()} bg='dark' className='text-light' style={{ width: '18rem' }}>
-<Card.Header className='text-light' >🥊 Aulas para Todos os Níveis</Card.Header>
-<Card.Body className='text-light' >
-  <Card.Text className="text-light">
-    Desde iniciantes até competidores profissionais..
-  </Card.Text>
-</Card.Body>
-</Card> */}

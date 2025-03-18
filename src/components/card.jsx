@@ -4,7 +4,7 @@ import "./css/card.css"
 
 function BoxingCard() {
   return (
-    <Card className='card__hovered shadow-box' data-bs-theme="dark" style={{ width: '20rem' }}>
+    <Card className='card__hovered shadow-box' data-bs-theme="light" style={{ width: '20rem' }}>
       <Card.Img variant="top" src="/vite.svg" />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>

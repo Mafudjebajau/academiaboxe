@@ -1,43 +1,64 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import "./css/navbar.css";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import "../components/css/navbar.css"
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const toggleNav = () => setIsNavOpen(!isNavOpen);
+const MyNavbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-black p-4">
-      <div className="container-fluid">
-        <h1 className="navbar-brand">🏆 Academia de Boxe</h1>
-        
-        {/* Botão Hamburger */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded={isNavOpen ? "true" : "false"}
-          aria-label="Toggle navigation"
-          onClick={toggleNav}
+    <Navbar expand="lg" variant="light" className="p-3 mb-5 position-fixed w-100">
+      <Container>
+        {/* Logo */}
+        <Navbar.Brand>Logo</Navbar.Brand>
+
+        {/* Botão do menu mobile */}
+        <span
+          // variant="outline-light"
+          className="d-lg-none"
+          onClick={() => setIsOpen(!isOpen)}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        {/* Menu Links */}
-        <div className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''}`} id="navbarNav">
-          <div className="navbar-nav ms-auto">
-            <Link className="nav-link" to="/">Home</Link>
-            <Link className="nav-link" to="/events">Eventos</Link>
-            <Link className="nav-link" to="/news">Notícias</Link>
-            <Link className="nav-link" to="/store">Loja</Link>
-            <Link className="nav-link" to="/signup">Inscrição</Link>
-            <Link className="nav-link" to="/contact">Contato</Link>
-          </div>
-        </div>
-      </div>
-    </nav>
+          {isOpen ? <FontAwesomeIcon icon={faClose} size="2x" color="red"></FontAwesomeIcon> : <FontAwesomeIcon size="2x" color="black" icon={faBars}></FontAwesomeIcon>}
+        </span>
+
+        {/* Menu Desktop (padrão do Bootstrap) */}
+        <Navbar.Collapse id="basic-navbar-nav" className="d-none d-lg-block">
+          <Nav className="ms-auto">
+            <Link to={"/"} className="nav-link">Início</Link>
+            <Link to={"/events"} className="nav-link">Eventos</Link>
+            <Link to={"/galery"} className="nav-link">Galeria</Link>
+            <Link to={"/store"} className="nav-link">Loja</Link>
+            <Link to={"/register"} className="nav-link">Inscrever</Link>
+            <Link to={"/contacts"} className="nav-link">Contato</Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+
+      {/* Menu Mobile com animação */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, x: -220 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -120 }}
+          transition={{ duration: 0.3 }}
+          className="d-lg-none  p-3 w-100 text-center"
+        >
+          <Nav className="flex-column">
+            <Nav.Link ><Link to={"/"}>Início</Link></Nav.Link>
+            <Nav.Link ><Link to={"/events"}>Eventos</Link></Nav.Link>
+            <Link to={"/galery"} className="nav-link">Galeria</Link>
+            <Nav.Link ><Link to={"/store"}>Loja</Link></Nav.Link>
+            <Nav.Link ><Link to={"/register"}>Inscrever</Link></Nav.Link>
+            <Nav.Link ><Link to={"/contacts"}>Contato</Link></Nav.Link>
+
+          </Nav>
+        </motion.div>
+      )}
+    </Navbar>
   );
-}
+};
+
+export default MyNavbar;

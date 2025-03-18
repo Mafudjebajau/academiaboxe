@@ -1,69 +1,74 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import BoxingCard from "../components/card"
-import ProductSlider from "../components/highlight";
+// import { Link } from "react-router-dom";
+// import BoxingCard from "../components/card"
+// import ProductSlider from "../components/highlight";
 // import Card from 'react-bootstrap/Card';
 import PrimeCard from "../components/primecard";
+import Section_Offers from "../components/Section_Offers";
 import AOS from "aos";
 import "aos/dist/aos.css"
-import CountUp from "react-countup";
-import ReactVisibilitySensor from "react-visibility-sensor";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+// import CountdownTimer from "../components/Contdown__Timer";
+import EventList from "../components/Event_list";
+// import MyGallery from "../components/Mygalery";
 
 
 export default function Home() {
   useEffect(() => {
-    AOS.init({ duration: 1500, once: false, offset: 100 })
+    AOS.init({ duration: 1500, once: false })
   }, [])
+
   return (
-
-    <div className="coverbanner w-100">
-      <div className="home">
-        <section>
-          <h1 className="Title">Bem-vindo à Academia de Boxe!</h1>
-          <p className="text-lg mt-4 col-12 col-md-8 col-lg-6">
-            Treine como um campeão. Junte-se a nós agora! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, perspiciatis incidunt! Esse ratione cupiditate, nam nostrum deserunt maiores quas incidunt eveniet aperiam? Incidunt quia iusto laboriosam ut explicabo tenetur nam?
-          </p>
-        </section>
-      </div>
-
-      <section className="features p-5 bg-dark  shadow-lg">
-        <div data-aos="slide-left">
-          <h2 className="text-center mb-4">O que oferecemos?</h2>
-        </div>
-        <div className="row p-2 justify-content-center gap-5" data-aos="slide-right">
-          <PrimeCard />
+    <>
+      <section>
+        <div className="bg-st-row text-center">
+          <div className="cover-filter pt-plus px-5">
+            <div className="d-f">
+              <h1 className="Title mb-5 fw-bold">Bem-vindo a melhor academia de boxe!</h1>
+            </div>
+            <Link to={"/register"}>
+              <Button className="btn-lg mt-5" variant="light">
+                Inscrever
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
-      <section className="carousel p-5 shadow-lg ">
-        <h2 className="text-center mb-4 text-light">Galeria</h2>
-        <ProductSlider />
+      {/* second section */}
+      <section id="offers">
+        <Section_Offers></Section_Offers>
       </section>
 
-      <section className="cta-section text-center py-5  bg-dark shadow-lg">
-        <h2 >Mais de..</h2>
-        <ReactVisibilitySensor partialVisibility>
-          {({ isVisible }) => (
-            <h2>
-              {isVisible ? <CountUp start={0} end={10000} duration={5} /> : "0"}
-            </h2>
-          )}
-        </ReactVisibilitySensor>
-        <Link to="/contato" className="btn btn-primary">Agende sua Aula Experimental</Link>
+      {/* trd section*/}
+      <section>
+        <PrimeCard
+          url={"/homebg.jpg"}
+          mediatype={"img"}
+          title={"Boxe fight"}
+          items={["la mfd miek llsf", "ola", "voila"]}
+        >
+        </PrimeCard>
+        <PrimeCard
+          url={"/video.webm"}
+          mediatype={"video"}
+          title={"Karate"}
+          items={["la mfd miek llsf", "ola matreica", "voila juslti"]}
+        >
+        </PrimeCard>
+        <PrimeCard
+          url={"/homebg.jpg"}
+          mediatype={"img"}
+          title={"Jiu Jitsu"}
+          items={["la mfd miek llsf", "ola", "voila"]}
+        >
+        </PrimeCard>
       </section>
-      <section className="features p-5 bg-black gap-5 shadow-lg  ">
-        <div data-aos="slide-left">
-          <h2 className="text-center mb-4">Nossos pacotes</h2>
-        </div>
-        <div className="row p-2 justify-content-center gap-5" data-aos="slide-right">
-          <BoxingCard
+      <section className="bg-default">
+        <h1 className="ps-4">Eventos</h1>
+        <EventList></EventList>
+      </section>
 
-          />
-          <BoxingCard
-          />
-          <BoxingCard
-          />
-        </div>
-      </section>
-    </div>
+    </>
   );
 }
